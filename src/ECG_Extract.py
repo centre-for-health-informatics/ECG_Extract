@@ -8,7 +8,7 @@ def mi_finding(report,ref_date):
     :param report: full text of the ECG report
     :param ref_date: Exclude ECG if it reports no changes compared to an ECG 
                      greater than 1 day before this date (usually admission date)
-    :returns: Ture if it should be excluded and False if it should be included
+    :returns: True if evidence of a new MI is present in the report and False otherwise
     """
     if exclude_no_change(report,ref_date):
         return False
@@ -37,7 +37,7 @@ def exclude_no_change(report,ref_date):
     :param report: full text of the ECG report
     :param ref_date: Exclude ECG if it reports no changes compared to an ECG 
                      greater than 1 day before this date (usually admission date)
-    :returns: Ture if it should be excluded and False if it should be included
+    :returns: True if it should be excluded and False if it should be included
     """
     hits = re.findall('When compared with ECG of (\d{2}-\w{3}-\d{4})((?:.|\n)*)',report)
     if len(hits)>0:
